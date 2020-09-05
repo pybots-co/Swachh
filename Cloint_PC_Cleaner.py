@@ -7,7 +7,6 @@ import subprocess
 import time
 import threading
 
-
 bat_script = r"""
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Active Setup Temp Folders" /v StateFlags0108 /d 2 /t REG_DWORD /f
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\BranchCache" /v StateFlags0108 /d 2 /t REG_DWORD /f
@@ -44,7 +43,7 @@ try:
     import PySimpleGUI as sg
     import safety
 except:
-    subprocess.call("powershell pip install 'PySimpleGUI' 'safety") 
+    subprocess.call("powershell pip install --upgrade 'PySimpleGUI' , 'safety' ") 
 
 import PySimpleGUI as sg
 
