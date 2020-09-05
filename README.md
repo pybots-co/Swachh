@@ -12,3 +12,6 @@
 6) Deletes Directx Shader Chache files
 7) Cleans all other cache files & Thumbnails
 9) Shows vulnerable Python Packages
+
+## We love your contribution
+Please submit a pull requet
