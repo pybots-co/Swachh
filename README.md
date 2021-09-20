@@ -14,6 +14,12 @@
 7) Cleans all other cache files & Thumbnails
 9) Shows vulnerable Python Packages
 
+# Easy to use: Just install this package:
+pip install -U Swachh
+
+# Run from Windows Command Prompt: 
+swachh
+
 ## Access our Python based Automation (RPA) Platform : <a href="https://pypi.org/project/ClointFusion" target='_blank'>ClointFusion</a>
 
 ## We love your contribution
