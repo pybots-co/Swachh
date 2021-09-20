@@ -93,7 +93,6 @@ def clean_site_packages():
     folder_lst=glob(site_packages_path + "/*/")
     for fldr in folder_lst:
         fldr_path = Path(fldr)
-        print(fldr_path.stem)
         if "~" in str(fldr_path.stem) or str(fldr_path.stem).startswith("-"):
             # print("Deleting broken folder(s) : {}".format(fldr_path))
             sg.Print("Deleting broken folder(s) : {}".format(fldr_path))
