@@ -13,6 +13,7 @@
 6) Deletes Directx Shader Chache files
 7) Cleans all other cache files & Thumbnails
 9) Shows vulnerable Python Packages
+10) Deletes broken folders from Site-Packages
 
 # Easy to use: Just install this package:
 pip install -U Swachh
