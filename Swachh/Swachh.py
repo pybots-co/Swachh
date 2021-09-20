@@ -96,7 +96,8 @@ def clean_site_packages():
         if "~" in str(fldr_path.stem) or str(fldr_path.stem).startswith("-"):
             # print("Deleting broken folder(s) : {}".format(fldr_path))
             sg.Print("Deleting broken folder(s) : {}".format(fldr_path))
-            os.system("rmdir /q /s {}".format(fldr_path))
+            # os.system("rmdir /q /s {}".format(fldr_path))
+            shutil.rmtree(fldr_path)
             
 def cleanup():
     try:
@@ -151,9 +152,7 @@ def main():
         after_free_space = diskUsage()
 
         total_cleaned_space = cleaned(before_free_space, after_free_space)
-        if total_cleaned_space < 0:
-            total_cleaned_space = 0
-
+        total_cleaned_space = max(total_cleaned_space, 0)
         sg.Print("\nTotal Disk space cleaned {} MB ".format(total_cleaned_space))
 
         sg.Print("\nDeleting broken folders from Site-Packages")
@@ -165,7 +164,7 @@ def main():
         sg.Print("\nExiting..")
 
         time.sleep(3)
-        
+
     except Exception as ex:
         print("Error in main="+str(ex))
 
