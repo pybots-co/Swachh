@@ -24,7 +24,7 @@ swachh
 ## Access our Python based Automation (RPA) Platform : <a href="https://pypi.org/project/ClointFusion" target='_blank'>ClointFusion</a>
 
 ## We love your contribution
-Please submit a pull requet
+Please submit a Pull Request
 
 # Contact us: 
 Drop a mail to ClointFusion@cloint.com
