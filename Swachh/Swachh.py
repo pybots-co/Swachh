@@ -7,11 +7,12 @@ import shutil
 import subprocess
 import time
 import platform
-from pyautogui import alert
 import site  
 from glob import glob
 from pathlib import Path
 import click
+import rich
+from rich.console import JustifyMethod
 from rich.live import Live
 from rich.panel import Panel
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn
@@ -68,29 +69,27 @@ job_progress = Progress(
     "{task.description}",
     SpinnerColumn(),
     BarColumn(),
-    TextColumn("[progress.percentage]{task.percentage:>3.0f}%"),
+    TextColumn("[progress.percentage]{task.percentage:>3.0f}%",justify="center"),
 )
-
 
 job1 = job_progress.add_task("[magenta]Cleaning temp...", total=5)
 job2 = job_progress.add_task("[cyan]Running scripts...", total=5)
 job3 = job_progress.add_task("[red]Optimizing packages...", total=5)
 
-
 total = sum(task.total for task in job_progress.tasks)
-overall_progress = Progress()
+overall_progress = Progress(auto_refresh=True)
 overall_task = overall_progress.add_task("Swachh", total=int(total))
+
 text = Text(justify="center")
-text.append("PC Cleaner by ")
+text.append("PC Cleaner / Tuner by ")
 text.append("ClointFusion", style="bold magenta")
 
-progress_table = Table.grid()
+progress_table = Table.grid(pad_edge=True)
 progress_table.add_row(Panel(text, border_style="magenta", padding=(1, 1)))
 progress_table.add_row(
     Panel.fit(overall_progress, title="Overall Progress", border_style="green", padding=(2, 2)),
     Panel.fit(job_progress, title="[b]Jobs", border_style="red", padding=(1, 2)),
 )
-
 
 def update_over():
     completed = sum(task.completed for task in job_progress.tasks)
@@ -183,8 +182,7 @@ def checkSafetyOfPythonPackages():
         _ , list_of_unsafe_packages = subprocess.getstatusoutput('powershell.exe safety check --bare')
         
         if list_of_unsafe_packages:
-            # sg.Print("Found unsafe packages.. Please uninstall vulnerable package(s) {} ".format(list_of_unsafe_packages))
-            printCommand(heading="Found unsafe packages.. Please uninstall vulnerable package(s)", description=list_of_unsafe_packages)       
+            printCommand(heading="Found unsafe packages.. Please uninstall vulnerable package(s):\n", description=list_of_unsafe_packages)       
             # cmd = "powershell.exe pip uninstall -y '{}' ".format(list_of_unsafe_packages)
             # subprocess.call(cmd) 
         else:
@@ -241,7 +239,7 @@ def cli_launch_swachh():
         if os_name == "windows":
             main()
         else:
-            alert("This feature works only on Windows OS !")
+            print("This feature works only on Windows OS !")
 
     except Exception as ex:
         print("Error in cli_launch_swachh="+str(ex))

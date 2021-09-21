@@ -1,5 +1,4 @@
 wheel >= 0.37.0
-PyAutoGUI >= 0.9.53
-PySimpleGUI >= 4.47.0
 safety>=1.10.3
 click>=8.0.1
+rich>=10.10.0

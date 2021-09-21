@@ -15,7 +15,7 @@ setup(
     packages=find_packages(), 
     include_package_data=True,
     zip_safe=False,
-    version='0.0.3',
+    version='0.0.4',
     description="Python based PC Cleaner & Tuner",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -38,6 +38,9 @@ setup(
     entry_points={
         'console_scripts': [
             'swachh = Swachh.Swachh:cli_launch_swachh',
+            'Swachh = Swachh.Swachh:cli_launch_swachh',
+            'swach = Swachh.Swachh:cli_launch_swachh',
+            'Swach = Swachh.Swachh:cli_launch_swachh',
         ],
     },
   python_requires='>=3.8, <4',
