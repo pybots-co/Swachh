@@ -20,6 +20,7 @@ from rich.table import Table
 from rich.columns import Columns
 from rich import print
 from rich.text import Text
+import declutter_downloads
 
 
 os_name = str(platform.system()).lower()
@@ -228,6 +229,7 @@ def perform_actions():
 
     checkSafetyOfPythonPackages()
     clean_site_packages(job3)
+    declutter_downloads.declutter_now()
 
     user_renderables = [Panel(i, expand=True) for i in summary]
     progress_table.add_row(Panel(Columns(user_renderables), title="Summary", border_style="cyan", padding=(1, 2)))
